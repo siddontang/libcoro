@@ -98,6 +98,11 @@ void func()
 
 int main()
 {    
+    if(coroutine.running() != 0)
+    {
+        cout << "error, main thread not a coroutine" << endl;
+        exit(1);
+    }
     Coro_t co = coroutine.create(std::bind(&func));
     
     coroutine.resume(co);
